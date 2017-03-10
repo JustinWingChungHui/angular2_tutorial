@@ -10,6 +10,8 @@
 
 # IDEs and editors
 /.idea
+/.vs
+/.vscode
 
 # misc
 /.sass-cache
