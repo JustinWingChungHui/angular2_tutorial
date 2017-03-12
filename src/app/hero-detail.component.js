@@ -15,10 +15,11 @@ var hero_service_1 = require('./hero.service');
 var hero_1 = require('./hero');
 require('rxjs/add/operator/switchMap');
 var HeroDetailComponent = (function () {
-    function HeroDetailComponent(heroService, route, location) {
+    function HeroDetailComponent(heroService, route, location, router) {
         this.heroService = heroService;
         this.route = route;
         this.location = location;
+        this.router = router;
     }
     HeroDetailComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -28,6 +29,9 @@ var HeroDetailComponent = (function () {
     };
     HeroDetailComponent.prototype.goBack = function () {
         this.location.back();
+    };
+    HeroDetailComponent.prototype.gotoDetail = function () {
+        this.router.navigate(['/detail', this.selectedHero.id]);
     };
     __decorate([
         core_1.Input(), 
@@ -39,7 +43,7 @@ var HeroDetailComponent = (function () {
             selector: 'my-hero-detail',
             templateUrl: './hero-detail.component.html',
         }), 
-        __metadata('design:paramtypes', [hero_service_1.HeroService, router_1.ActivatedRoute, common_1.Location])
+        __metadata('design:paramtypes', [hero_service_1.HeroService, router_1.ActivatedRoute, common_1.Location, router_1.Router])
     ], HeroDetailComponent);
     return HeroDetailComponent;
 }());
